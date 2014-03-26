@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Abandoned Properties in Paterson</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/bootstrap-switch.css" rel="stylesheet">
+
+    
+   
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<script>
+   $('#user[remember_me]').bootstrapSwitch();
+    
+    </script>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          
+          <a class="navbar-brand" href="#">Abandoned Property List</a>
+        </div>
+          
+        <div class="navbar-collapse pull-right">
+          <form class="navbar-form" role="form">
+            
+            <div class="button-group">
+             
+                <div class="dropdown-menu pull-right">
+              
+            </div>
+                </div>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+            <br><br><br>
+            
+            <div class="text-center modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <form action="[YOUR ACTION]" method="post" accept-charset="UTF-8">
+                  <input id="user_username"  type="text" name="user[username]" size="30" placeholder="E-mail..." /><br>
+                  <input id="user_password" type="password" name="user[password]" size="30" placeholder="password..."/><br><br>
+                  <!--<input id="user_remember_me"  type="checkbox" name="user[remember_me]" value="1" />-->
+                  <label class="string optional" for="user_remember_me"> Remember me&nbsp;</label><div class="btn-group btn-toggle"> 
+    <button class="btn btn-sm">YES</button>
+    <button class="btn btn-sm btn-primary active">NO</button>
+  </div>
+                
+                  
+    
+                  <p class="text-center">Entry for authorized City of Paterson Personnel only</p>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="button submit" class="btn btn-primary" name="commit" value="Sign in">
+      </div>
+    </div>
+  </div>
+</div>
+            <div class="panel-heading"><h2><b>Properties</b></h2></div>
+           
+
+  <!-- Table -->
+            <form class="navbar-form" role="form">
+            <div class="form-group pull-right">
+              <input type="search" placeholder="Search..." class="form-control">
+                <select class="form-control">
+                  <option>Street</option>
+                  <option>Block</option>
+                  <option>Avenue</option>
+                  <option>Lane</option>
+                  <option>Drive</option>
+                </select>
+<button type="submit" class="btn btn-success">Go</button>
+            </div>
+                </form>
+            <button class="navbar-left btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Sign in...
+</button>&nbsp;
+                 <a href="addPublicEntry.php"><button class="btn btn-default" >Add entry to list...</button></a>
+            <br><br>
+            
+  <table class="table table-hover table-bordered">
+    <tr> <td>Block</td>
+        <td>Lot</td>
+        <td>Ward</td>
+        <td>Street</td>
+        <td>City</td>
+        <td>Zip Code</td>
+        <td>State</td>
+        <td>Boarded</td>
+        <td>Sign Posted</td>
+        <td>Comments</td>
+        <td>Descriptions</td>
+    </tr>
+      
+      <tr> <td>1245</td>
+        <td> Best Street</td>
+        <td>Best Block</td>
+        <td>12</td>
+        <td></td>
+        <td>?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>12/12/12</td>
+        <td></td></td>
+    </tr>
+          
+          <tr> <td>1245</td>
+        <td> Best Street</td>
+        <td>Best Block</td>
+        <td>12</td>
+        <td></td>
+        <td>?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>12/12/12</td>
+        <td></td></td>
+    </tr>
+      <tr> <td>1245</td>
+        <td> Best Street</td>
+        <td>Best Block</td>
+        <td>12</td>
+        <td></td>
+        <td>?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>12/12/12</td>
+        <td></td></td>
+    </tr>
+<tr> <td>1245</td>
+        <td> Best Street</td>
+        <td>Best Block</td>
+        <td>12</td>
+        <td></td>
+        <td>?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>12/12/12</td>
+        <td></td></td>
+    </tr>
+<tr> <td>1245</td>
+        <td> Best Street</td>
+        <td>Best Block</td>
+        <td>12</td>
+        <td></td>
+        <td>?</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>12/12/12</td>
+        <td></td></td>
+    </tr>
+     
+  </table>
+        
+       
+          </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+<script>
+        $( document ).ready(function() {
+    $('.btn-toggle').click(function() {
+    $(this).find('.btn').toggleClass('active');  
+    
+    if ($(this).find('.btn-primary').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-primary');
+    }
+    if ($(this).find('.btn-danger').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-danger');
+    }
+    if ($(this).find('.btn-success').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-success');
+    }
+    if ($(this).find('.btn-info').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-info');
+    }
+    
+    $(this).find('.btn').toggleClass('btn-default');
+       
+});
+
+$('form').submit(function(){
+	//alert($(this["options"]).val());
+    return false;
+});
+});
+    </script>
+    
+  </body>
+</html>
