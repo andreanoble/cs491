@@ -2,15 +2,16 @@
 //variables for mysql
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $block = $_POST["block"];
-      $lot = $_POST["lot"];
-      $ward = $_POST["ward"];
-      $street = $_POST["street"];
-      $zipcode = $_POST["zipcode"];
-      $boarded = $_POST["boarded"];
-      $sign = $_POST["sign"];
-      $description = $_POST["description"];
-      $comments = $_POST["comments"];
+      $BLOCK = $_POST["inputBlock"];
+      $LOT = $_POST["inputLot"];
+      $WARD = $_POST["inputWard"];
+      $ADDRNUM = $_POST["inputAddrnum"];
+      $STREET = $_POST["inputStreet"];
+      $ZIP = $_POST["inputZip"];
+      $BOARDED = $_POST["inputBoarded"];
+      $SPOST = $_POST["inputSign"];
+      $PDESC = $_POST["inputDescription"];
+      $LCOMMENT = $_POST["inputComments"];
 
       // TODO: Mysql entry
 
@@ -99,6 +100,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="inputWard" class="col-sm-3 control-label">Ward</label>
                 <div class="col-sm-9">
                   <input class="form-control" id="inputWard" placeholder="Ward">
+                </div>
+              </div>
+
+               <div class="form-group">
+                <label for="inputAddrnum" class="col-sm-3 control-label">Address Number</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="inputAddrnum" placeholder="Address number">
                 </div>
               </div>
 
