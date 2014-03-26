@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="addPublicEntry.php" method="post" class="form-horizontal" role="form">
+          <form action="testimg2.php" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -158,11 +158,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
               </div>
              
+               <p>File 
+                <input type="file" name="image"> 
+              <p>
 
               <div>
                 <button  value="Send" class="btn btn-primary" type="submit" id="submit">Continue</button>
                 <br><br>
               </div>
+
+             
+
             </div>
           </form><!--form collapse-->
       </div>    

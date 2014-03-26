@@ -1,4 +1,7 @@
 <?php
+
+//uploads an image file
+
 // Start a session for error reporting
 session_start();
 
@@ -36,7 +39,7 @@ echo "</pre>";
 
 // This variable is the path to the image folder where all the images are going to be stored
 // Note that there is a trailing forward slash
-$TARGET_PATH = "upload/";
+$TARGET_PATH = "images/";
 
 // Get our POSTed variables
 

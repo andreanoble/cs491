@@ -19,6 +19,7 @@ try {
 	exit;
 }
 
+/*
 
 //query
 try{
@@ -34,4 +35,5 @@ echo "<pre>";
 $property = ($results->fetchAll(PDO::FETCH_ASSOC));
 
 var_dump($property);
+*/
 ?>
