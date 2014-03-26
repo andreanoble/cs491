@@ -1,7 +1,49 @@
 <?php
-//variables for mysql
+     /**
+      * This function can be used to check the sanity of variables
+      *
+      * @access private
+      *
+      * @param string $type  The type of variable can be bool, float, numeric, string, array, or object
+      * @param string $string The variable name you would like to check
+      * @param string $length The maximum length of the variable
+      *
+      * return bool
+      */
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    function sanityCheck($string, $type, $length){
+
+      // assign the type
+      $type = 'is_'.$type;
+
+      if(!$type($string))
+      {
+        return FALSE;
+      }
+      // now we see if there is anything in the string
+      elseif(empty($string))
+      {
+        return FALSE;
+      }
+      // then we check how long the string is
+      elseif(strlen($string) > $length)
+      {
+        return FALSE;
+      }
+      else
+      {
+        // if all is well, we return TRUE
+        return TRUE;
+      }
+    }
+    function checkEmail($email){
+      return preg_match('/^\S+@[\w\d.-]{2,}\.[\w]{2,6}$/iU', $email) ? TRUE : FALSE;
+    }
+    
+    header("Content-Type: text/html");
+    
+    if(isset($_POST['addRecord']))
+    {
       $BLOCK = $_POST["inputBlock"];
       $LOT = $_POST["inputLot"];
       $WARD = $_POST["inputWard"];
@@ -12,15 +54,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $SPOST = $_POST["inputSign"];
       $PDESC = $_POST["inputDescription"];
       $LCOMMENT = $_POST["inputComments"];
+      $image = $_FILES['image'];
+      $CHECKPASS=true;
+    }
+    /*else
+    {
+      $inc_id = $_REQUEST['ownerid'];
+      
+      ini_set('display_errors',1);
+      error_reporting(E_ALL);
 
-      // TODO: Mysql entry
-
-      //goes to edit page and keeps the back button from resubmitting
-      header("Location: editEntry.php");
-      exit;
-}
-
+      session_start();
+      
+      $sql=mysqli_connect("local","pytools","patersonDB","paterson");
+      
+      
+      if(mysqli_connect_errno($sql))
+      {
+        print("<tr>
+              <td>Failed to connect to MySQL: " . mysqli_connect_error() . ";</td>
+              
+            </tr>");
+      }
+      else
+      {
+        $query=mysqli_query($sql, "
+          SELECT * 
+          FROM OWNERS
+          WHERE OWNERID = ".$inc_id."
+        ");
+        $rowtot = 0;
+        while($row=mysqli_fetch_assoc($query)){
+          $FNAME=$row["FNAME"];
+          $MNAME=$row["MNAME"];
+          $LNAME=$row["LNAME"];
+          $SOCIAL=$row["SOCIAL"];
+          $ADDRESS=$row["ADDRESS"];
+          $CITY=$row["CITY"];
+          $STATE=$row["STATE"];
+          $ZIP=$row["ZIP"];
+          $HPHONE=$row["HPHONE"];
+          $CPHONE=$row["CPHONE"];
+          $DOB=$row["DOB"];
+          $EMAIL=$row["EMAIL"];
+          $rowtot++;
+          $FNameErr="";
+          $EmailErr="";
+          $DOBErr="";
+        }
+        if ( $rowtot == 0){
+          //header('HTTP/1.0 404 Not Found');
+          echo "Add Error Messge";
+        }
+      }
+    }
+    */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="testimg2.php" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
+          <form action="upload9.php" method="post" id='login' class="form-horizontal" enctype="multipart/form-data" role="form">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -147,14 +237,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <div class="form-group">
                 <label for="inputDescription" class="col-sm-3 control-label">Property Description</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="inputDescription" placeholder="Property Description">
+                  <input class="form-control" id="inputDescription" placeholder="Property Description">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputComments" class="col-sm-3 control-label">Comments</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="inputComments" placeholder="Comments...">
+                  <input  class="form-control" id="inputComments" placeholder="Comments...">
                 </div>
               </div>
              
@@ -164,6 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
               <div>
                 <button  value="Send" class="btn btn-primary" type="submit" id="submit">Continue</button>
+                <input type='hidden' name='addRecord' value='1'>
                 <br><br>
               </div>
 
