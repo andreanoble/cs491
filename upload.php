@@ -1,7 +1,18 @@
 <?php
 
 
-$sql=mysqli_connect("web178.webfaction.com","pytools","patersonDB","paterson");
+//connection to my DB
+$host = "localhost";
+$user = "root";
+$host_password = "" ;
+$db = "test" ;
+
+
+$sql=mysqli_connect($host,$user, $host_password, $db);
+
+//Connection to project website
+//$sql=mysqli_connect("web178.webfaction.com","pytools","patersonDB","paterson");
+
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -15,7 +26,7 @@ if($_FILES['image']){
 function is_valid_type($file)
 {
 // This is an array that holds all the valid image MIME types
-$valid_types = array("image/jpg", "image/jpeg", "image/bmp", "image/gif");
+$valid_types = array("image/jpg", "image/jpeg", "image/bmp", "image/gif", "image/png");
 
 if (in_array($file['type'], $valid_types))
 return 1;
