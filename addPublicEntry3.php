@@ -119,20 +119,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <div class="form-group">
                 <label for="inputBoarded" class="col-sm-3 control-label">Boarded</label>
                 <div class="col-sm-9">
-                    <div class="btn-group btn-toggle"> 
-                      <button class="btn btn-default" name="inputBoarded" value="Y">YES</button>
-                      <button class="btn btn-primary active">NO</button>
-                    </div>
+                  <input  class="form-control" id="inputBoarded" name="inputBoarded" placeholder="Y/N">
                 </div>
               </div>
-                     
+
               <div class="form-group">
-                <label for="inputSign" class="col-sm-3 control-label">Sign Posted</label>
+                <label for="inputSign" class="col-sm-3 control-label">Sign</label>
                 <div class="col-sm-9">
-                  <div class="btn-group btn-toggle"> 
-                    <button class="btn btn-default" name="inputSign" value="Y">YES</button>
-                    <button class="btn btn-primary active">NO</button>
-                  </div>
+                  <input  class="form-control" id="inputSign" name="inputSign" placeholder="Y/N">
                 </div>
               </div>
                 
