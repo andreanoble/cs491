@@ -1,12 +1,7 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$host_password = "" ;
-$db = "test" ;
-$table = "adn2_db";
 
-$sql=mysqli_connect($host,$user, $host_password, $db);
+$sql=mysqli_connect("web178.webfaction.com","pytools","patersonDB","paterson");
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -44,7 +39,7 @@ $TARGET_PATH = "images/";
 $image = $_FILES['image'];
 
 // Sanitize our inputs
-$image['name'] = mysql_real_escape_string($image['name']);
+$image['name'] = mysqli_real_escape_string($sql, $image['name']);
 
 // Build our target path full string. This is where the file will be moved do
 // i.e. images/picture.jpg
@@ -81,7 +76,7 @@ if (move_uploaded_file($image['tmp_name'], $TARGET_PATH))
 {
 // NOTE: This is where a lot of people make mistakes.
 // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
-$insert="INSERT INTO $table (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
+$insert="INSERT INTO PROPERTY (BLOCK, LOT, WARD, ADDRNUM, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, PHOTOLOC) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputAddrNum]' , '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
 
 
 if (!mysqli_query($sql,$insert))
