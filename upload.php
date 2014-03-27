@@ -85,13 +85,14 @@ if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-//echo "1 record added";
+
 
 /*
 $sql = "INSERT INTO adn2_db (IMG) VALUES ( '" . $image['name'] . "')";
 $result = mysqli_query($con,$sql) or die ("Could not insert data into DB: " . mysqli_error($sql));
 */
-//echo"Imgage uploaded successfully";
+
+echo "edit page under construction";
 exit;
 }
 else
@@ -104,4 +105,5 @@ exit;
 }
 mysqli_close($con);
 }
+
 ?>
