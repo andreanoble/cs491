@@ -2,15 +2,15 @@
 //variables for mysql
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $block = $_POST["block"];
-      $lot = $_POST["lot"];
-      $ward = $_POST["ward"];
-      $street = $_POST["street"];
-      $zipcode = $_POST["zipcode"];
-      $boarded = $_POST["boarded"];
-      $sign = $_POST["sign"];
-      $description = $_POST["description"];
-      $comments = $_POST["comments"];
+      $BLOCK = $_POST["block"];
+      $LOT = $_POST["lot"];
+      $WARD = $_POST["ward"];
+      $STREET = $_POST["street"];
+      $ZIP = $_POST["zipcode"];
+      $BOARDED= $_POST["boarded"];
+      $SPOST = $_POST["sign"];
+      $PDESC = $_POST["description"];
+      $LCOMMENT = $_POST["comments"];
 
       // TODO: Mysql entry
 
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="insert.php" method="post" class="form-horizontal" role="form">
+          <form action="upload.php" method="post" class="form-horizontal" role="form">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="inputBoarded" class="col-sm-3 control-label">Boarded</label>
                 <div class="col-sm-9">
                     <div class="btn-group btn-toggle"> 
-                      <button class="btn btn-default">YES</button>
+                      <button class="btn btn-default" name="inputBoarded" value="Y">YES</button>
                       <button class="btn btn-primary active">NO</button>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="inputSign" class="col-sm-3 control-label">Sign Posted</label>
                 <div class="col-sm-9">
                   <div class="btn-group btn-toggle"> 
-                    <button class="btn btn-default">YES</button>
+                    <button class="btn btn-default" name="inputSign" value="Y">YES</button>
                     <button class="btn btn-primary active">NO</button>
                   </div>
                 </div>
@@ -139,20 +139,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <div class="form-group">
                 <label for="inputDescription" class="col-sm-3 control-label">Property Description</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="inputDescription" name="inputDescription" placeholder="Property Description">
+                  <input type="text" class="form-control" id="inputDescription" name="inputDescription" placeholder="Property Description">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputComments" class="col-sm-3 control-label">Comments</label>
                 <div class="col-sm-9">
-                  <input type="password" class="form-control" id="inputComments" name="inputComment" placeholder="Comments...">
+                  <input type="text" class="form-control" id="inputComments" name="inputComments" placeholder="Comments...">
                 </div>
               </div>
              
-
+              <p>File <input type="file" name="image"><p>
+                
+              
               <div>
-                <button  value="Send" class="btn btn-primary" type="submit" id="submit">Continue</button>
+                <button  value="Send" class="btn btn-primary" type="submit" id="submit" name="upload">Continue</button>
                 <br><br>
               </div>
             </div>
