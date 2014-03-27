@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="upload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          <form action="uplload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
            <div class="col-xs-6 col-xs-offset-3">
             
