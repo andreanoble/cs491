@@ -1,12 +1,4 @@
 <?php
-
-//uploads an image file
-
-// Start a session for error reporting
-session_start();
-
-// Call our connection file
-//require("dbc.php");
 $con=mysqli_connect("localhost","root","","test");
 // Check connection
 if (mysqli_connect_errno())
@@ -15,6 +7,8 @@ if (mysqli_connect_errno())
   }
 
 
+if($_FILES['image']){
+//---------image upload-----
 // Check to see if the type of file uploaded is a valid image type
 function is_valid_type($file)
 {
@@ -52,15 +46,15 @@ $image['name'] = mysql_real_escape_string($image['name']);
 // Build our target path full string. This is where the file will be moved do
 // i.e. images/picture.jpg
 $TARGET_PATH .= $image['name'];
-
+/*
 // Make sure all the fields from the form have inputs
-if (  $image['name'] == "" )
+if (  $_POST['inputStreet'] == "" )
 {
 $_SESSION['error'] = "All fields are required";
 echo "All fields are required";
 exit;
 }
-
+*/
 // Check to make sure that our file is actually an image
 // You check the file type instead of the extension because the extension can easily be faked
 if (!is_valid_type($image))
@@ -84,9 +78,20 @@ if (move_uploaded_file($image['tmp_name'], $TARGET_PATH))
 {
 // NOTE: This is where a lot of people make mistakes.
 // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
+$sql="INSERT INTO adn2_db (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
+
+
+if (!mysqli_query($con,$sql))
+  {
+  die('Error: ' . mysqli_error($con));
+  }
+//echo "1 record added";
+
+/*
 $sql = "INSERT INTO adn2_db (IMG) VALUES ( '" . $image['name'] . "')";
 $result = mysqli_query($con,$sql) or die ("Could not insert data into DB: " . mysqli_error($sql));
-echo"Imgage uploaded successfully";
+*/
+//echo"Imgage uploaded successfully";
 exit;
 }
 else
@@ -96,5 +101,7 @@ else
 $_SESSION['error'] = "Could not upload file. Check read/write persmissions on the directory";
 header("Location: fail.php");
 exit;
+}
+mysqli_close($con);
 }
 ?>
