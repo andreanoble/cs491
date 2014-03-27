@@ -1,19 +1,33 @@
 <?php
 // Start a session for error reporting
-session_start();
-            
-            $sql=mysqli_connect("localhost","root","","test");
-
-// Call our connection file
-//require("mydatabase.php");
-
-// Get our POSTed variables
-$image = $_FILES['image'];
+//connection to my DB
+$host = "localhost";
+$user = "root";
+$host_password = "" ;
+$db = "test" ;
 
 
-//check if there is a image
- if ($image['size'] != "0" ){
+    // Call our connection file
+$sql=mysqli_connect($host,$user, $host_password, $db);
 
+
+
+$insert="INSERT INTO PROPERTY (BLOCK, LOT, WARD, ADDRNUM, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputAddrNum]' , '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]')";
+
+if (!mysqli_query($sql,$insert))
+  {
+  die('Error: ' . mysqli_error($sql));
+  }
+
+
+ //---------------image handling--------------------------------------------
+  // Get our POSTed variables
+ $image = $_FILES['image'];
+
+
+    //check if there is a image
+if ($image['size'] != "0" ){
+    echo "in image handling";
     // Check to see if the type of file uploaded is a valid image type
     function is_valid_type($file)
     {
@@ -34,17 +48,10 @@ $image = $_FILES['image'];
         echo "</pre>";
     }
 
-    // Set some constants
-
     // This variable is the path to the image folder where all the images are going to be stored
     // Note that there is a trailing forward slash
     $TARGET_PATH = "images/";
 
-    // Get our POSTed variables
-    $image = $_FILES['image'];
-
-
-    showContents($image);
     // Sanitize our inputs
 
     $image['name'] = mysql_real_escape_string($image['name']);
@@ -53,24 +60,18 @@ $image = $_FILES['image'];
     // i.e.  images/picture.jpg
     $TARGET_PATH .= $image['name'];
 
-    // Make sure all the fields from the form have inputs
-    if ( $image['name'] == "" )
-    {
-        $_SESSION['error'] = "All fields are required";
-    //    header("Location: index.html");
-        exit;
-    }
+    showContents($image);
 
     // Check to make sure that our file is actually an image
     // You check the file type instead of the extension because the extension can easily be faked
     if (!is_valid_type($image))
     {
-        $_SESSION['error'] = "You must upload a jpeg, gif, or bmp";
+        $_SESSION['error'] = "You must upload a jpeg, gif, png or bmp";
      //   header("Location: index.html");
         exit;
     }
 
-    // Here we check to see if a file with that name already exists
+    // Check to see if a file with that name already exists
     // You could get past filename problems by appending a timestamp to the filename and then continuing
     if (file_exists($TARGET_PATH))
     {
@@ -84,8 +85,13 @@ $image = $_FILES['image'];
     {
         // NOTE: This is where a lot of people make mistakes.
         // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
-        $sql = "insert into PROPERTY (IMG) values ( '" . $image['name'] . "')";
-        $result = mysqli_query($sql) or die ("Could not insert data into DB: " . mysql_error());
+        $insertImage = "INSERT INTO PROPERTY (PHOTOLOC) VALUES ( '" . $image['name'] . "')";
+        
+    if (!mysqli_query($sql,$insertImage))
+      {
+      die('Error: ' . mysqli_error($sql));
+      }
+
        // header("Location: testimg.php");
         exit;
     }
@@ -101,6 +107,12 @@ $image = $_FILES['image'];
 else
 {
     echo "no image file";
-}
 
+    
+
+}
+//-----------------end image handling----------------------------------
+
+/* close connection */
+mysqli_close($sql);
 ?>
