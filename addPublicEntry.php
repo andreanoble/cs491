@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $PDESC = $_POST["inputDescription"];
       $LCOMMENT = $_POST["inputComments"];
 
-      // TODO: Mysql entry
 
       //goes to edit page and keeps the back button from resubmitting
       header("Location: editEntry.php");

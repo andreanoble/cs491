@@ -1,5 +1,12 @@
 <?php
-$con=mysqli_connect("localhost","root","","test");
+
+$host = "localhost";
+$user = "root";
+$host_password = "" ;
+$db = "test" ;
+$table = "adn2_db";
+
+$con=mysqli_connect($host , $user, $host_password, $db);
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -29,18 +36,14 @@ print_r($array);
 echo "</pre>";
 }
 
-// Set some constants
-
 // This variable is the path to the image folder where all the images are going to be stored
 // Note that there is a trailing forward slash
 $TARGET_PATH = "images/";
 
-// Get our POSTed variables
-
+// Get our POSTed variable for image
 $image = $_FILES['image'];
 
 // Sanitize our inputs
-
 $image['name'] = mysql_real_escape_string($image['name']);
 
 // Build our target path full string. This is where the file will be moved do
@@ -78,19 +81,13 @@ if (move_uploaded_file($image['tmp_name'], $TARGET_PATH))
 {
 // NOTE: This is where a lot of people make mistakes.
 // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
-$sql="INSERT INTO adn2_db (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
+$sql="INSERT INTO $table (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
 
 
 if (!mysqli_query($con,$sql))
   {
   die('Error: ' . mysqli_error($con));
   }
-
-
-/*
-$sql = "INSERT INTO adn2_db (IMG) VALUES ( '" . $image['name'] . "')";
-$result = mysqli_query($con,$sql) or die ("Could not insert data into DB: " . mysqli_error($sql));
-*/
 
 echo "edit page under construction";
 exit;
