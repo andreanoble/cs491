@@ -2,15 +2,15 @@
 //variables for mysql
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $BLOCK = $_POST["block"];
-      $LOT = $_POST["lot"];
-      $WARD = $_POST["ward"];
-      $STREET = $_POST["street"];
-      $ZIP = $_POST["zipcode"];
-      $BOARDED= $_POST["boarded"];
-      $SPOST = $_POST["sign"];
-      $PDESC = $_POST["description"];
-      $LCOMMENT = $_POST["comments"];
+      $BLOCK = $_POST["inputBlock"];
+      $LOT = $_POST["inputLot"];
+      $WARD = $_POST["inputWard"];
+      $STREET = $_POST["inputStreet"];
+      $ZIP = $_POST["inputZip"];
+      $BOARDED= $_POST["inputBoarded"];
+      $SPOST = $_POST["inputSign"];
+      $PDESC = $_POST["inputDescription"];
+      $LCOMMENT = $_POST["inputComments"];
 
       // TODO: Mysql entry
 
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="upload.php" method="post" class="form-horizontal" role="form">
+          <form action="upload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -149,14 +149,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <input type="text" class="form-control" id="inputComments" name="inputComments" placeholder="Comments...">
                 </div>
               </div>
-             
-              <p>File <input type="file" name="image"><p>
+                   <p>File <input type="file" name="image"> 
+                   <p>
+                   <input TYPE="submit" name="upload" title="Add data to the Database" value="submit"/>
+                 
                 
               
-              <div>
-                <button  value="Send" class="btn btn-primary" type="submit" id="submit" name="upload">Continue</button>
-                <br><br>
-              </div>
+              
             </div>
           </form><!--form collapse-->
       </div>    
