@@ -6,7 +6,7 @@ $host_password = "" ;
 $db = "test" ;
 $table = "adn2_db";
 
-$con=mysqli_connect($host , $user, $host_password, $db);
+$sql=mysqli_connect($host,$user, $host_password, $db);
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -81,15 +81,15 @@ if (move_uploaded_file($image['tmp_name'], $TARGET_PATH))
 {
 // NOTE: This is where a lot of people make mistakes.
 // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
-$sql="INSERT INTO $table (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
+$insert="INSERT INTO $table (BLOCK, LOT, WARD, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, IMG) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]', '" . $image['name'] . "')";
 
 
-if (!mysqli_query($con,$sql))
+if (!mysqli_query($sql,$insert))
   {
-  die('Error: ' . mysqli_error($con));
+  die('Error: ' . mysqli_error($sql));
   }
 
-echo "edit page under construction";
+header("Location: editEntry.php");
 exit;
 }
 else
@@ -100,7 +100,7 @@ $_SESSION['error'] = "Could not upload file. Check read/write persmissions on th
 header("Location: fail.php");
 exit;
 }
-mysqli_close($con);
+mysqli_close($sql);
 }
 
 ?>
