@@ -5,7 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $BLOCK = $_POST["inputBlock"];
       $LOT = $_POST["inputLot"];
       $WARD = $_POST["inputWard"];
-      $STREET = $_POST["inputStreet"];
+      $ADDRNUM = $_POST["AddrNum"];
+	  $STREET = $_POST["inputStreet"];
       $ZIP = $_POST["inputZip"];
       $BOARDED= $_POST["inputBoarded"];
       $SPOST = $_POST["inputSign"];
@@ -76,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="uplload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          <form action="upload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -100,7 +101,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <input class="form-control" id="inputWard" name="inputWard" placeholder="Ward">
                 </div>
               </div>
-
+				
+              <div class="form-group">
+                <label for="inputAddrNum" class="col-sm-3 control-label">Address Number</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="inputAddrNum" name="inputAddrNum" placeholder="Address Number">
+                </div>
+              </div>
+              
               <div class="form-group">
                 <label for="inputStreet" class="col-sm-3 control-label">Street</label>
                 <div class="col-sm-9">
@@ -142,13 +150,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <input type="text" class="form-control" id="inputComments" name="inputComments" placeholder="Comments...">
                 </div>
               </div>
-                   <p>File <input type="file" name="image"> 
-                   <p>
-                   <input TYPE="submit" name="upload" title="Add data to the Database" value="submit"/>
-                 
-                
-              
-              
+                   <p>File <input type="file" name="image"><p>
+                   <input TYPE="submit" name="upload" title="Add data to the Database" value="submit"/>           
             </div>
           </form><!--form collapse-->
       </div>    
