@@ -39,27 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+    <div class="navbar navbar-inverse navbar" role="navigation">
+      <div class="container-fluid">
         <div class="navbar-header">
-          
           <a class="navbar-brand" href="#">Abandoned Property List</a>
         </div>
-          
-        <div class="navbar-collapse pull-right">
-          <form class="navbar-form" role="form">
-            
-            <div class="button-group">
-             
-              <div class="dropdown-menu pull-right">
-              
-              </div>
-            </div>
-          </form>
-        </div><!--/.navbar-collapse -->
       </div>
-    </div>
-    <br><br><br>
+    </div><!--/.navbar-collapse -->
+
     
 
 
@@ -68,8 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container-fluid">
       <div class="row">
-        
-        <br><br><br>
         <br>
         <a href="index.html">Go back... </a>  
       </div>  
@@ -77,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="upload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          <form action="testimg.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -117,22 +102,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </div>
 
               <div class="form-group">
-                <label for="inputZip" class="col-sm-3 control-label">Zip code</label>
-                <div class="col-sm-9">
+                <label for="inputZip" class="col-xs-3 control-label">Zip code</label>
+                <div class="col-xs-4">
                   <input  class="form-control" id="inputZip" name="inputZip" placeholder="Zip Code">
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputBoarded" class="col-sm-3 control-label">Boarded</label>
-                <div class="col-sm-9">
+                <label for="inputBoarded" class="col-xs-3 control-label">Boarded</label>
+                <div class="col-xs-3">
                   <input  class="form-control" id="inputBoarded" name="inputBoarded" placeholder="Y/N">
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputSign" class="col-sm-3 control-label">Sign</label>
-                <div class="col-sm-9">
+                <label for="inputSign" class="col-xs-3 control-label">Sign</label>
+                <div class="col-xs-3">
                   <input  class="form-control" id="inputSign" name="inputSign" placeholder="Y/N">
                 </div>
               </div>
@@ -155,15 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           </form><!--form collapse-->
       </div>    
-    </div>
-
-      <a>
-      <ul class="nav">
-      <li class="contact "><a href="contact.php">Contact Us</a></li>
-      </ul></a>     
-
-
-      
+    </div> 
       <hr>
 
       <footer>
