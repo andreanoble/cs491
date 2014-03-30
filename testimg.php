@@ -44,7 +44,16 @@ $sql=mysqli_connect($host,$user, $host_password, $db);
 
     //check if there is a image
 if ($image['size'] != "0" ){
-   
+   // Check to see if the type of file uploaded is a valid image type
+function is_valid_type($file)
+{
+    // This is an array that holds all the valid image MIME types
+    $valid_types = array("image/jpg", "image/jpeg", "image/bmp", "image/gif", "image/png");
+
+    if (in_array($file['type'], $valid_types))
+    return 1;
+    return 0;
+    }
   
     // Just a short function that prints out the contents of an array in a manner that's easy to read
     // I used this function during debugging but it serves no purpose at run time for this example
@@ -83,7 +92,7 @@ if ($image['size'] != "0" ){
     if (!is_valid_type($image))
     {
         $_SESSION['error'] = "Only jpeg, gif, png or bmp alre allowed";
-        //header("Location: addPublicEntry.php");
+        header("Location: addPublicEntry.php");
         exit;
     }
 
