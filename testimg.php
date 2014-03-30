@@ -73,6 +73,7 @@ function is_valid_type($file)
     // This variable is the path to the image folder where all the images are going to be stored
     // Note that there is a trailing forward slash
     $TARGET_PATH = "images/".$FOLDER."/";
+    $FOLDER_PATH = $TARGET_PATH;
     
      // If path doesn't exist make directory
     if(!is_dir($TARGET_PATH)) 
@@ -109,11 +110,10 @@ function is_valid_type($file)
     if (move_uploaded_file($image['tmp_name'], $TARGET_PATH))
     {
         // We are *not* putting the image into the database; we are putting a reference to the file's location on the server
-        $insertImage = "UPDATE PROPERTY SET PHOTOLOC='$TARGET_PATH' WHERE  USERNAME = '$username' AND ADDRNUM = '$inputAddrNum' AND STREET = '$inputStreet'";
+        $insertImage = "UPDATE PROPERTY SET PHOTOLOC='$FOLDER_PATH' WHERE  USERNAME = '$username' AND ADDRNUM = '$inputAddrNum' AND STREET = '$inputStreet'";
         
         if (!mysqli_query($sql,$insertImage))
           {
-         //delete($TARGET_PATH);
           die('Error: ' . mysqli_error($sql));
           }
 
