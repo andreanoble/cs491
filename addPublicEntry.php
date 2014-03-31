@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $LOT = $_POST["inputLot"];
       $WARD = $_POST["inputWard"];
       $ADDRNUM = $_POST["AddrNum"];
-	  $STREET = $_POST["inputStreet"];
+	    $STREET = $_POST["inputStreet"];
       $ZIP = $_POST["inputZip"];
       $BOARDED= $_POST["inputBoarded"];
       $SPOST = $_POST["inputSign"];
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       <div class="row">
-          <form action="testimg.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+          <form action="upload.php" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 
            <div class="col-xs-6 col-xs-offset-3">
             
@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <hr>
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; 2014</p>
       </footer>
     </div> <!-- /container -->
 
