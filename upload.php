@@ -13,7 +13,7 @@ if (mysqli_connect_errno())
 
 $date = date("m-d-Y");
 //insert 
-$insert="INSERT INTO PROPERTY (BLOCK, LOT, WARD, ADDRNUM, STREET, ZIP, BOARDED, SPOST, PDESC, LCOMMENT, LDATE) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputAddrNum]' , '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]','$date')";
+$insert="INSERT INTO PROPERTY (BLOCK, LOT, WARD, ADDRNUM, STREET, ZIP, BOARDED, SPOST, PDESC, COMMENT, LDATE) VALUES ('$_POST[inputBlock]', '$_POST[inputLot]', '$_POST[inputWard]', '$_POST[inputAddrNum]' , '$_POST[inputStreet]','$_POST[inputZip]','$_POST[inputBoarded]','$_POST[inputSign]','$_POST[inputDescription]','$_POST[inputComments]','$date')";
 
 if (!mysqli_query($sql,$insert))
   {
@@ -117,7 +117,7 @@ function is_valid_type($file)
 }
 else
 {
-    header("Location: editEntry.php");
+    header("Location: listPublic.php");
 
     
 
